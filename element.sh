@@ -24,7 +24,7 @@ echo I could not find that element in the database.
 else
 SYMBOL=$($PSQL "SELECT symbol FROM elements WHERE atomic_number=$ATOMIC_NUMBER")
 NAME=$($PSQL "SELECT name FROM elements WHERE atomic_number=$ATOMIC_NUMBER")
-TYPE=$($PSQL "SELECT type FROM properties WHERE atomic_number=$ATOMIC_NUMBER")
+TYPE=$($PSQL "SELECT type FROM types JOIN properties ON properties.type_id = types.type_id WHERE atomic_number=$ATOMIC_NUMBER")
 ATOMIC_MASS=$($PSQL "SELECT atomic_mass FROM properties WHERE atomic_number=$ATOMIC_NUMBER")
 MELTING_POINT=$($PSQL "SELECT melting_point_celsius FROM properties WHERE atomic_number=$ATOMIC_NUMBER")
 BOILING_POINT=$($PSQL "SELECT boiling_point_celsius FROM properties WHERE atomic_number=$ATOMIC_NUMBER")
